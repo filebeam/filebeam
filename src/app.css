@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  html,
+  body,
+  #app,
+  main {
+    @apply size-full overflow-hidden;
+  }
+
+  body,
+  #app,
+  main {
+    @apply bg-inherit transition-colors duration-75;
+  }
+
+  ::-webkit-scrollbar {
+    @apply hidden;
+  }
+
+  :focus-visible {
+    @apply outline-none outline-blue-400;
+  }
+
+  :disabled {
+    @apply cursor-not-allowed opacity-50;
+  }
+
+  * {
+    @apply select-none;
+    -webkit-user-drag: none;
+  }
+
+}
+
+@layer components {
+  code {
+    @apply my-2 block max-h-48 select-text overflow-x-hidden overflow-y-scroll text-clip rounded-md border border-gray-300 bg-gray-200 px-2 py-0.5 dark:border-gray-600 dark:bg-gray-700;
+  }
+
+  kbd {
+    @apply rounded-md border border-b-[3px] border-gray-300 bg-gray-200 px-1 font-sans font-bold dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 text-gray-600;
+  }
+
+  .kbd-label {
+    @apply text-sm text-gray-400 dark:text-gray-600;
+  }
+
+  [data-checkbox-root] {
+    @apply expo-out inline-flex size-5 flex-shrink-0 items-center justify-center rounded-md border border-blue-300 bg-blue-400 text-gray-100 transition-transform duration-500 active:scale-90 dark:text-gray-700;
+  }
+
+  [data-state~="unchecked"] {
+    @apply border-gray-300 bg-gray-200 dark:border-gray-600 dark:bg-gray-700;
+  }
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .link {
+    @apply text-blue-600 transition-colors duration-300 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-100;
+  }
+
+  .expo-out {
+    transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  }
+}
+
+/* Tooltips */
+
+.tippy-box[data-theme~="default"] {
+  @apply mx-4 border border-gray-200 bg-gray-100 font-bold text-gray-500 transition-all duration-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200;
+}
+
+/* Menus */
+
+body {
+  #app {
+    @apply transition-all duration-300;
+  }
+
+  &:has([data-menu-content]:focus-within) {
+    #app {
+      @apply pointer-events-none brightness-75;
+    }
+  }
+}
+
+[data-menu-content] {
+  @apply z-30 flex flex-col gap-1.5 rounded-md border border-gray-200 bg-gray-100 p-2 dark:border-gray-700 dark:bg-gray-800;
+
+  [data-menu-item] {
+    @apply rounded-md px-2 py-1 text-[.95rem] text-gray-600 dark:text-gray-300 outline outline-1 outline-transparent transition-all dark:hover:bg-gray-700 dark:hover:text-gray-50 dark:hover:outline-gray-600 hover:outline-gray-300 dark:focus-visible:bg-gray-700 focus-visible:outline-blue-400 font-medium hover:text-gray-700 hover:bg-gray-200;
+
+    span {
+      @apply flex flex-row items-center gap-2;
+    }
+
+    svg {
+      @apply size-[1.3em];
+    }
+  }
+
+  [data-menu-separator] {
+    @apply mx-1 border-t border-gray-200/50 dark:border-gray-700;
+  }
+}
+
+/* Dialogos */
+
+[data-alert-dialog-overlay],
+[data-dialog-overlay] {
+  @apply absolute inset-0 z-50 backdrop-brightness-[25%];
+}
+
+[data-alert-dialog-content],
+[data-dialog-content] {
+  @apply fixed top-0 left-0 bottom-0 right-0 m-auto max-w-[90%] max-h-[90%] md:max-w-2xl z-50 gap-1 flex items-start flex-col border p-7 outline-none w-full dark:bg-gray-900 dark:border-gray-700 text-gray-900 dark:text-gray-50 rounded-xl overflow-hidden h-min bg-gray-100 border-gray-300;
+
+  * {
+    @apply z-50;
+  }
+
+  [data-alert-dialog-title],
+  [data-dialog-title] {
+    @apply flex flex-row items-center gap-2 text-2xl font-bold;
+  }
+
+  [data-alert-dialog-description] {
+    @apply max-w-full overflow-x-hidden overflow-y-scroll text-lg text-gray-600 dark:text-gray-400;
+  }
+
+  svg.dialog-icon {
+    @apply z-[45] absolute bottom-0 left-0 size-36 dark:text-gray-800 text-gray-200 -translate-x-5;
+  }
+}
+
+/* --------------------------------- Toasts --------------------------------- */
+
+[data-sonner-toast] {
+  @apply flex flex-row items-center gap-4 rounded-md border px-6 py-2 dark:border-gray-700 dark:bg-gray-800;
+
+  [data-content] {
+    [data-title] {
+      @apply font-semibold dark:text-gray-100;
+    }
+
+    [data-description] {
+      @apply dark:text-gray-100 opacity-50 text-[.9em] -mt-1;
+    }
+  }
+}
