@@ -1,6 +1,7 @@
 <script>
     import { filesize } from "filesize";
     import fileExtension from "file-extension";
+    import ApkParser from "app-info-parser/src/apk";
     import * as audioMeta from "music-metadata-browser";
 
     import { fileTypes } from "../lib/fileTypes";
@@ -137,6 +138,24 @@
                                 }, "");
                                 return btoa(stringChar);
                             }
+                        case "exec":
+                            if (fileExtension($currFile.file.name) == "apk") {
+                                const parser = new ApkParser($currFile.file);
+                                parser
+                                    .parse()
+                                    .then((result) => {
+                                        $currFile.src = result.icon;
+                                        $currFile.icon = FilePreview;
+                                        readingFile = false;
+                                    })
+                                    .catch((err) => {
+                                        readingFile = false;
+                                    });
+                            } else {
+                                readingFile = false;
+                            }
+
+                            break;
                         default:
                             readingFile = false;
                             break;
