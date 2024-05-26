@@ -15,8 +15,7 @@
     <div>
   <strong>
   <a href="https://filebeam.xyz">Sitio Principal</a> • 
-  <a href="https://docs.filebeam.xyz">Documentacion</a> • 
-  <a href="#-tabla-de-contenidos">Tabla de Contenidos</a>
+  <a href="https://docs.filebeam.xyz">Documentacion</a>
   </strong>
   <h6>
   <a href="https://github.com/Jorge-603/filebeam/"><img alt="Version del package.json" src="https://img.shields.io/github/package-json/v/Jorge-603/filebeam?style=flat-square"></a>
@@ -28,28 +27,14 @@
 > [!NOTE]
 > Este repositorio es para el proximo rediseño de FileBeam, el cual se encuentra en desarollo, por ende los contenidos que se encuentran aqui no representan el producto final, puedes encontrar el repositorio para la version actual [aqui](https://github.com/xXJorge603Xx/filebeam-laravel)
 
-<!-- omit from toc -->
-## Tabla de Contenidos
-
-* [Ejecutar de manera local](#ejecutar-de-manera-local)
-  * [Requisitos Previos](#requisitos-previos)
-  * [Instalacion](#instalacion)
-* [¿Porque FileBeam?](#porque-filebeam)
-* [Roadmap](#roadmap)
-* [Contribuir](#contribuir)
-* [Licencia](#licencia)
-
-
-
-## Ejecutar de manera local
+## 💻 Ejecutar de manera local
 
 Para configurar rapidamente una version local de FileBeam puedes seguir los siguientes pasos
 
 ### Requisitos Previos
 
 * **Algun editor de texto** *(VSCode Recomendado)*
-* **Node.js v20 (LTS)**
-* **Sentido Comun**
+* **Node.js v20**
 
 ### Instalacion
 
@@ -57,7 +42,7 @@ Para configurar rapidamente una version local de FileBeam puedes seguir los sigu
    ```sh
    git clone https://github.com/Jorge-603/filebeam
    ```
-2. Instala las dependencias NPM
+2. Instala las dependencias necesarias
    ```sh
    npm install
    ```
@@ -66,27 +51,14 @@ Para configurar rapidamente una version local de FileBeam puedes seguir los sigu
    npm run dev
    ```
 
-## ¿Porque FileBeam?
+## ✨ Contribuir
 
-FileBeam es un servicio que te permite compartir archivos facil y rapidamente a traves de enlaces directos, ademas, FileBeam es completamente codigo abierto, por lo que puedes hacer lo que desees con el, FileBeam provee una alternativa directa a sitios como [catbox.moe](https://catbox.moe) para aquellos que deseen una segunda opcion
+Puedes contribuir a FileBeam o apoyar el proyecto de las siguientes maneras:
 
-## Roadmap
+* Contribuir por ti mismo al desarollo de filebeam con mejoras o bug fixes usando [pull requests](https://github.com/filebeam/filebeam/pulls)
+* Reportando errores o sugerir nuevas caracteristicas [creando issues](https://github.com/filebeam/filebeam/issues/new)
+* ¡Dandole una estrella a este repositorio!
 
-Una lista de caracteristicas pendientes o planeadas a futuro sujeta a cambios
-
-- [ ] Subir desde URL
-- [ ] Subidas Temporales
-- [ ] Cliente para Android
-- [ ] Cliente para Linux/CLI
-
-## Contribuir
-
-Todas las contribuciones a este repositorio son bienvenidas, si deseas contribuir a este proyecto, puedes contribuir de las siguientes formas
-
-Si deseaas reportar algun error, o tienes alguna sugerencia, puedes abrir un issue explicando a detalle tu reporte o sugerencia. Tambien puedes contribuir directamente al proyecto creando un fork de este repositorio y haciendo un pull request con tus cambios
-
-> *Tambien puedes apoyar este proyecto simplemente dandole una estrella a este repositorio si este te ha servido o lo consideras de utilidad* ✨
-
-## Licencia
+## ⚖️ Licencia
 
 FileBeam es software de código abierto bajo la licencia [GNU GPL-v3.0](https://github.com/filebeam/filebeam/blob/main/LICENSE).
