@@ -14,8 +14,7 @@
   </p>
     <div>
   <strong>
-  <a href="https://filebeam.xyz">Sitio Principal</a> • 
-  <a href="https://docs.filebeam.xyz">Documentacion</a>
+  <a href="https://filebeam.xyz">Sitio Principal</a> • <a href="https://docs.filebeam.xyz">Documentacion</a>
   </strong>
   <h6>
   <a href="https://github.com/Jorge-603/filebeam/"><img alt="Version del package.json" src="https://img.shields.io/github/package-json/v/Jorge-603/filebeam?style=flat-square"></a>
@@ -33,7 +32,6 @@ Para configurar rapidamente una version local de FileBeam puedes seguir los sigu
 
 ### Requisitos Previos
 
-* **Algun editor de texto** *(VSCode Recomendado)*
 * **Node.js v20**
 
 ### Instalacion
@@ -56,7 +54,7 @@ Para configurar rapidamente una version local de FileBeam puedes seguir los sigu
 Puedes contribuir a FileBeam o apoyar el proyecto de las siguientes maneras:
 
 * Contribuir por ti mismo al desarollo de filebeam con mejoras o bug fixes usando [pull requests](https://github.com/filebeam/filebeam/pulls)
-* Reportando errores o sugerir nuevas caracteristicas [creando issues](https://github.com/filebeam/filebeam/issues/new)
+* Reportando errores o sugerir nuevas caracteristicas [creando un issue](https://github.com/filebeam/filebeam/issues/new)
 * ¡Dandole una estrella a este repositorio!
 
 ## ⚖️ Licencia
