@@ -1,0 +1,37 @@
+name: ✨ Sugerir una nueva característica
+description: ¿Tienes alguna sugerencia para una nueva caracteristica o mejora? Escribela aqui
+title: 'feat: <Describe tu sugerencia aqui>'
+labels: ["enhancement"]
+body:
+  - type: dropdown
+    id: platform
+    attributes:
+      label: ¿Para cual de las siguientes aplica tu sugerencia?
+      description: Para otras plataformas, crea un issue en su repositorio respectivo
+      options:
+        - Sitio Web (Cliente, UI/UX)
+        - API (Funcionalidad Backend)
+      default: 0
+    validations:
+      required: true
+  - type: dropdown
+    id: suggest-type
+    attributes:
+      label: ¿Esta sugerencia es para una nueva caracteristica o una mejora a otra ya existente?
+      options:
+        - Nueva caracteristica
+        - Mejorar una caracteristica existente
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: feat-description
+    attributes:
+      label: Describe tu sugerencia
+    validations:
+      required: true
+  - type: textarea
+    id: examples
+    attributes:
+      label: Ejemplo de la caracteristica
+      description: Si puedes proveer algun ejemplo de la sugerencia en otros productos, o tienes algun concepto para demostrar el posible funcionamiento de esta, mencionalo aqui

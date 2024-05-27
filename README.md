@@ -54,7 +54,7 @@ Para configurar rapidamente una version local de FileBeam puedes seguir los sigu
 Puedes contribuir a FileBeam o apoyar el proyecto de las siguientes maneras:
 
 * Contribuir por ti mismo al desarollo de filebeam con mejoras o bug fixes usando [pull requests](https://github.com/filebeam/filebeam/pulls)
-* Reportando errores o sugerir nuevas caracteristicas [creando un issue](https://github.com/filebeam/filebeam/issues/new)
+* Reportando errores o sugerir nuevas caracteristicas [creando un issue](https://github.com/filebeam/filebeam/issues/new/choose)
 * ¡Dandole una estrella a este repositorio!
 
 ## ⚖️ Licencia

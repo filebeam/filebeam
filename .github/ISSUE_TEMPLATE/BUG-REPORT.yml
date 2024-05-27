@@ -1,0 +1,35 @@
+name: 🐛 Reportar un bug o error
+description: ¿Has encontrado algun error en la funcionalidad de la API o el sitio web? Reportalo aqui
+title: 'bug: <Describe tu problema aqui>'
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: platform
+    attributes:
+      label: ¿En cual de los siguientes estas experimentando el problema?
+      description: Para otras plataformas, crea un issue en su repositorio respectivo
+      options:
+        - Sitio Web (Error del lado del cliente)
+        - API (Error del servidor)
+        - No estoy seguro
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: Describe el problema
+      description: Explica detalladamente cual es el problema que estas experimentando
+    validations:
+      required: true
+  - type: textarea
+    id: how-to
+    attributes:
+      label: ¿Como reproducir?
+      description: Si es posible, explica los pasos necesarios para recrear el problema
+  - type: textarea
+    id: error-code
+    attributes:
+      label: ¿Cual es el error que estas viendo?
+      description: Si no aplica, o no hay ningun mensaje de error, puedes ignorar esta seccion, incluye capturas de pantalla si es posible
+      render: text
