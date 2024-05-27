@@ -214,8 +214,8 @@
         class="flex-center size-full flex-row gap-5 p-6 text-left h-sm:flex-col h-sm:gap-2 h-sm:text-center">
         <svelte:component
             this={$currFile.icon != undefined ? $currFile.icon : CloudUpload}
-            class="h-20 min-w-20" />
-        <div class="flex max-w-full flex-col">
+            class="max-h-20 min-w-20 h-auto w-auto" />
+        <div class="flex max-w-[80%] flex-col">
             <span class="truncate text-lg font-bold">
                 {#if readingFile}
                     <LoaderCircle class="inline-block h-[1em] animate-spin" />
