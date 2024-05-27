@@ -1,6 +1,6 @@
 <br />
 <div align="center">
-  <a href="https://github.com/Jorge-603/filebeam">
+  <a href="https://github.com/filebeam/web">
     <img src=".github/assets/logo_alt.png" alt="Logo de FileBeam" height="80">
   </a>
 
@@ -38,7 +38,7 @@ Para configurar rapidamente una version local de FileBeam puedes seguir los sigu
 
 1. Clona el repositorio en alguna ruta accesible
    ```sh
-   git clone https://github.com/Jorge-603/filebeam
+   git clone https://github.com/filebeam/web
    ```
 2. Instala las dependencias necesarias
    ```sh
@@ -53,10 +53,10 @@ Para configurar rapidamente una version local de FileBeam puedes seguir los sigu
 
 Puedes contribuir a FileBeam o apoyar el proyecto de las siguientes maneras:
 
-* Contribuir por ti mismo al desarollo de filebeam con mejoras o bug fixes usando [pull requests](https://github.com/filebeam/filebeam/pulls)
-* Reportando errores o sugerir nuevas caracteristicas [creando un issue](https://github.com/filebeam/filebeam/issues/new/choose)
+* Contribuir por ti mismo al desarollo de filebeam con mejoras o bug fixes usando [pull requests](https://github.com/filebeam/web/pulls)
+* Reportando errores o sugerir nuevas caracteristicas [creando un issue](https://github.com/filebeam/web/issues/new/choose)
 * ¡Dandole una estrella a este repositorio!
 
 ## ⚖️ Licencia
 
-FileBeam es software de código abierto bajo la licencia [GNU GPL-v3.0](https://github.com/filebeam/filebeam/blob/main/LICENSE).
+FileBeam es software de código abierto bajo la licencia [GNU GPL-v3.0](https://github.com/filebeam/web/blob/main/LICENSE).
