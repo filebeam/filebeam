@@ -76,9 +76,15 @@
 
     $: innerWidth = 0;
     $: toastPos =
-        innerWidth >= parseInt(twCfg.theme.screens.lg)
+        innerWidth >= parseInt(twCfg.theme.screens.sm)
             ? "bottom-right"
             : "top-right";
+
+    window.onbeforeunload = function () {
+        if ($upload.uploading) {
+            return true;
+        }
+    };
 
     // Cambia al modo oscuro dependiendo del tema del sistema
     /* TODO: Remplazar por una opcion entre AUTO, DARK y LIGHT al
@@ -104,18 +110,17 @@
         formData.append("file", $currFile.file);
 
         let uploadTimeout = setTimeout(() => {
-            toast.warning("La subida parece estar tomando más de lo esperado", {
+            toast.warning("Subida Lenta", {
                 description:
-                    "Verifica tu conexión a internet o el estado del servidor",
+                    "La subida está tardando más de lo esperado, verifica tu conexión o el estado del servidor.",
             });
-        }, 20000);
+        }, 30000);
 
         fetch($api.upload, {
             method: "POST",
             body: formData,
         })
             .then(async (response) => {
-                $upload.disabled = false;
                 $upload.uploading = false;
                 clearTimeout(uploadTimeout);
                 if (response.ok) {
@@ -310,7 +315,7 @@
             transition={fade}
             transitionConfig={{ duration: 200 }} />
         <Dialog.Content class="md:max-w-md" transition={scaleDialog}>
-            <div class="flex-center size-full flex-col gap-2">
+            <div class="flex-center size-full flex-col gap-3">
                 <Logo
                     type="default"
                     class="h-14 fill-blue-400 dark:fill-blue-300" />
@@ -334,14 +339,14 @@
                             class="link"
                             target="_blank"
                             href="https://docs.filebeam.xyz/disclaimer/tos">
-                            Terminos y condiciones
+                            Terminos y Condiciones
                         </a>
                         y la
                         <a
                             class="link"
                             target="_blank"
                             href="https://docs.filebeam.xyz/disclaimer/privacy">
-                            Politica de privacidad
+                            Politica de Privacidad
                         </a>
                         del servicio
                     </Label.Root>
@@ -360,7 +365,7 @@
         bind:position={toastPos}
         toastOptions={{
             unstyled: true,
-            duration: 5000,
+            duration: 7000,
         }}>
         <Info slot="info-icon" />
         <TriangleAlert slot="warning-icon" />
