@@ -17,8 +17,8 @@
   <a href="https://filebeam.xyz">Sitio Principal</a> • <a href="https://docs.filebeam.xyz">Documentacion</a>
   </strong>
   <h6>
-  <a href="https://github.com/Jorge-603/filebeam/"><img alt="Version del package.json" src="https://img.shields.io/github/package-json/v/Jorge-603/filebeam?style=flat-square"></a>
-  <a href="https://github.com/Jorge-603/filebeam/commits/main/"><img alt="Ultimo commit" src="https://img.shields.io/github/last-commit/Jorge-603/filebeam?style=flat-square"></a>
+  <a href="https://github.com/Jorge-603/filebeam/"><img alt="Version del package.json" src="https://img.shields.io/github/package-json/v/filebeam/web?style=flat-square"></a>
+  <a href="https://github.com/filebeam/web/commits/main/"><img alt="Ultimo commit" src="https://img.shields.io/github/last-commit/filebeam/web?style=flat-square"></a>
   <a href="https://svelte.dev/"><img alt="Svelte" src="https://img.shields.io/badge/svelte-FF3E00?style=flat-square&logo=svelte&logoColor=white"></a>
   </div>
 </div>
