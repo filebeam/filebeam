@@ -1,20 +1,42 @@
 <script>
     import { LoaderCircle } from "lucide-svelte";
     export let icon = undefined,
-        disabled = false,
         loading = false,
-        tabindex = undefined,
-        type = "primary";
+        href = undefined,
+        disabled = false,
+        type = "primary",
+        target = undefined,
+        tabindex = undefined;
 </script>
 
-<button on:click class="button {type ? type : 'primary'}" {disabled} {tabindex}>
-    {#if loading}
-        <LoaderCircle class="animate-spin" />
-    {:else if icon}
-        <svelte:component this={icon} />
-    {/if}
-    <slot />
-</button>
+{#if href}
+    <a
+        class="button {type ? type : 'primary'}"
+        {href}
+        {target}
+        {disabled}
+        {tabindex}>
+        {#if loading}
+            <LoaderCircle class="animate-spin" />
+        {:else if icon}
+            <svelte:component this={icon} />
+        {/if}
+        <slot />
+    </a>
+{:else}
+    <button
+        class="button {type ? type : 'primary'}"
+        on:click
+        {disabled}
+        {tabindex}>
+        {#if loading}
+            <LoaderCircle class="animate-spin" />
+        {:else if icon}
+            <svelte:component this={icon} />
+        {/if}
+        <slot />
+    </button>
+{/if}
 
 <style lang="postcss">
     .button.primary {
@@ -72,7 +94,7 @@
     }
 
     .button.secondary {
-        color: theme(colors.gray.400);
+        color: theme(colors.gray.500);
     }
 
     :global(.dark) .button.secondary {
