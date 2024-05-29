@@ -214,7 +214,7 @@
         class="flex-center size-full flex-row gap-5 p-6 text-left h-sm:flex-col h-sm:gap-2 h-sm:text-center">
         <svelte:component
             this={$currFile.icon != undefined ? $currFile.icon : CloudUpload}
-            class="max-h-20 min-w-20 h-auto w-auto" />
+            class="h-auto max-h-20 w-auto min-w-20" />
         <div class="flex max-w-[80%] flex-col">
             <span class="truncate text-lg font-bold">
                 {#if readingFile}
@@ -261,7 +261,6 @@
         border-radius: theme("borderRadius.xl");
         border-color: theme("colors.gray.200");
         background-color: theme("colors.gray.100/.3");
-        background-image: url(/src/assets/tex-noise.png);
         transition:
             all 300ms cubic-bezier(0.4, 0, 0.2, 1),
             transform 500ms ease;

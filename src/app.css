@@ -119,9 +119,17 @@ body {
   @apply absolute inset-0 z-50 backdrop-brightness-[25%];
 }
 
+[data-alert-dialog-content] {
+  @apply gap-1;
+}
+
+[data-dialog-content] {
+  @apply gap-3;
+}
+
 [data-alert-dialog-content],
 [data-dialog-content] {
-  @apply fixed top-0 left-0 bottom-0 right-0 m-auto max-w-[90%] max-h-[90%] md:max-w-2xl z-50 gap-1 flex items-start flex-col border p-7 outline-none w-full dark:bg-gray-900 dark:border-gray-700 text-gray-900 dark:text-gray-50 rounded-xl overflow-hidden h-min bg-gray-100 border-gray-300;
+  @apply fixed top-0 left-0 bottom-0 right-0 m-auto max-w-[90%] max-h-[90%] md:max-w-2xl z-50 flex items-start flex-col border p-7 outline-none w-full dark:bg-gray-900 dark:border-gray-700 text-gray-900 dark:text-gray-50 rounded-xl overflow-hidden h-min bg-gray-100 border-gray-300;
 
   * {
     @apply z-50;
