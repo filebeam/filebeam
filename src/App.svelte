@@ -18,7 +18,6 @@
         alert,
         showAlert,
     } from "./components/AlertDialog.svelte";
-    import { fetchAnnouncements } from "./components/Announcements.svelte";
 
     import {
         Link,
