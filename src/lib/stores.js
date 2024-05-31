@@ -1,6 +1,7 @@
 import { readable, writable } from 'svelte/store';
 
 const baseURL = "https://filebeam.xyz";
+export const statusURL = readable("https://jorge603.instatus.com");
 
 export const api = readable({
     upload: `${baseURL}/api`,

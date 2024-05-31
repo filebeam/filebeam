@@ -1,6 +1,6 @@
 <script>
     import { onMount } from "svelte";
-    import { api } from "../lib/stores";
+    import { api, statusURL } from "../lib/stores";
     import ls from "localstorage-slim";
 
     import { fade } from "svelte/transition";
@@ -239,13 +239,17 @@
                     {/if}
                     <Megaphone class="dialog-icon" />
                     <div
-                        class="mt-4 flex w-full flex-row flex-wrap items-center justify-between gap-3">
-                        <Button
-                            target="_blank"
-                            type="secondary"
-                            href="https://jorge603.instatus.com">
-                            Estado de los servidores
-                        </Button>
+                        class="{$statusURL
+                            ? 'justify-between'
+                            : 'justify-end'} mt-4 flex w-full flex-row flex-wrap items-center gap-3">
+                        {#if $statusURL}
+                            <Button
+                                target="_blank"
+                                type="secondary"
+                                href={$statusURL}>
+                                Estado de los servidores
+                            </Button>
+                        {/if}
                         <Button
                             tabindex="1"
                             on:click={() => (announcements.open = false)}>
