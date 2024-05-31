@@ -26,6 +26,7 @@
     "localstorage-slim": "^2.7.1",
     "lucide-svelte": "^0.376.1",
     "music-metadata-browser": "^2.5.10",
+    "showdown": "^2.1.0",
     "svelte-sonner": "^0.3.24",
     "tippy.js": "^6.3.7"
   }
