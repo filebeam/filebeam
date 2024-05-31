@@ -34,6 +34,8 @@
     };
 
     const mdParser = new showdown.Converter();
+    mdParser.setFlavor("github");
+
     const helpMenu = [
         {
             name: "Preguntas Frecuentes",

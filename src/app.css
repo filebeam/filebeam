@@ -73,6 +73,7 @@
   }
 
   .markdown {
+    @apply flex flex-col gap-3;
 
     h1,
     h2,
@@ -80,7 +81,7 @@
     h4,
     h5,
     h6 {
-      @apply my-4 font-bold;
+      @apply font-bold;
     }
 
     h1 {
@@ -111,16 +112,16 @@
       @apply link;
     }
 
+    p:first-child {
+      @apply inline;
+    }
+
     li {
-      @apply my-2 ml-2 list-inside list-disc md:ml-4;
+      @apply m-2 list-inside list-disc md:ml-4;
     }
 
     li::marker {
       content: "•\2000";
-    }
-
-    p:first-child {
-      @apply inline;
     }
   }
 }
