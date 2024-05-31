@@ -1,5 +1,5 @@
 <script context="module">
-    import { writable, get } from "svelte/store";
+    import { writable } from "svelte/store";
 
     import Button from "./Button.svelte";
     import { AlertDialog } from "bits-ui";
@@ -64,7 +64,7 @@
                             disabled={$alert.loading}
                             type={button.type}
                             on:click={button.action}>
-                            {button.name}
+                            {button.label}
                         </Button>
                     {/each}
                 {:else}

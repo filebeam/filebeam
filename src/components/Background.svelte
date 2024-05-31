@@ -28,7 +28,7 @@
         validSrc = false;
     };
 
-    $: if ($currFile.src !== undefined) {
+    $: if ($currFile.src) {
         img.src = $currFile.src;
     } else {
         validSrc = false;

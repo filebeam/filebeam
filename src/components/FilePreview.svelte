@@ -27,7 +27,7 @@
         validSrc = false;
     };
 
-    $: if ($currFile.src !== undefined) {
+    $: if ($currFile.src) {
         img.src = $currFile.src;
         alt = `Vista previa de ${$currFile.file.name}`;
     }

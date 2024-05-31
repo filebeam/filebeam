@@ -1,6 +1,6 @@
 <script>
-    import { upload, currFile, api } from "./lib/stores";
     import ls from "localstorage-slim";
+    import { upload, currFile, api } from "./lib/stores";
 
     import Logo from "./components/Logo.svelte";
     import Button from "./components/Button.svelte";
@@ -13,10 +13,12 @@
 
     import { Dialog, Checkbox, Label } from "bits-ui";
     import { Toaster, toast } from "svelte-sonner";
+
     import AlertDialog, {
         alert,
         showAlert,
     } from "./components/AlertDialog.svelte";
+    import { fetchAnnouncements } from "./components/Announcements.svelte";
 
     import {
         Link,
@@ -66,13 +68,9 @@
             reader.readAsDataURL(blob);
         });
 
-    let consentDialog = !ls.get("userConsent"),
-        userConsent = false;
-
-    function handleConsent() {
-        consentDialog = false;
-        ls.set("userConsent", true);
-    }
+    let consentDialog = !ls.get("FLAG_USER_CONSENT"),
+        userConsent = false,
+        header;
 
     $: innerWidth = 0;
     $: toastPos =
@@ -112,7 +110,7 @@
         let uploadTimeout = setTimeout(() => {
             toast.warning("Subida Lenta", {
                 description:
-                    "La subida está tardando más de lo esperado, verifica tu conexión o el estado del servidor.",
+                    "La subida está tardando más de lo esperado, verifica tu conexión a internet o el estado del servidor.",
             });
         }, 30000);
 
@@ -137,9 +135,9 @@
                                     >${escapeHtml(await response.text())}
                                 </code>
                                 Al reportar errores a los desarrolladores,
-                                asegúrate de mostrar este mensaje y,
-                                adicionalmente, una captura de pantalla de la
-                                consola de desarrollador
+                                asegúrate de mostrar este mensaje y, si es
+                                posible, una captura de pantalla de la consola
+                                de desarrollador
                                 <br />
                                 <span class="kbd-label">
                                     <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> +
@@ -159,12 +157,12 @@
                                 icon: Hammer,
                                 actions: [
                                     {
-                                        name: "Mostrar detalles",
+                                        label: "Mostrar detalles",
                                         type: "secondary",
                                         action: () => showResponse(response),
                                     },
                                     {
-                                        name: "Aceptar",
+                                        label: "Aceptar",
                                         action: () => {
                                             $alert.open = false;
                                         },
@@ -180,12 +178,12 @@
                                 icon: OctagonX,
                                 actions: [
                                     {
-                                        name: "Mostrar detalles",
+                                        label: "Mostrar detalles",
                                         type: "secondary",
                                         action: () => showResponse(response),
                                     },
                                     {
-                                        name: "Aceptar",
+                                        label: "Aceptar",
                                         action: () => {
                                             $alert.open = false;
                                         },
@@ -201,12 +199,12 @@
                                 icon: OctagonX,
                                 actions: [
                                     {
-                                        name: "Mostrar detalles",
+                                        label: "Mostrar detalles",
                                         type: "secondary",
                                         action: () => showResponse(response),
                                     },
                                     {
-                                        name: "Aceptar",
+                                        label: "Aceptar",
                                         action: () => {
                                             $alert.open = false;
                                         },
@@ -221,12 +219,12 @@
                                 icon: OctagonX,
                                 actions: [
                                     {
-                                        name: "Mostrar detalles",
+                                        label: "Mostrar detalles",
                                         type: "secondary",
                                         action: () => showResponse(response),
                                     },
                                     {
-                                        name: "Aceptar",
+                                        label: "Aceptar",
                                         action: () => {
                                             $alert.open = false;
                                         },
@@ -265,7 +263,7 @@
                     icon: OctagonX,
                     actions: [
                         {
-                            name: "Mostrar detalles",
+                            label: "Mostrar detalles",
                             type: "secondary",
                             action: () => {
                                 showAlert({
@@ -276,7 +274,7 @@
                                         <code>${err}</code>
                                         Al reportar errores a los
                                         desarrolladores, asegúrate de mostrar
-                                        este error y preferiblemente, una
+                                        este mensaje y, si es posible, una
                                         captura de pantalla de la consola de
                                         desarrollador
                                         <br />
@@ -292,7 +290,7 @@
                             },
                         },
                         {
-                            name: "Aceptar",
+                            label: "Aceptar",
                             action: () => {
                                 $alert.open = false;
                             },
@@ -304,6 +302,54 @@
 </script>
 
 <svelte:window bind:innerWidth />
+
+<main class="absolute flex flex-col text-gray-900 dark:text-gray-50">
+    <Toaster
+        bind:position={toastPos}
+        toastOptions={{
+            unstyled: true,
+            duration: 7000,
+        }}>
+        <Info slot="info-icon" />
+        <TriangleAlert slot="warning-icon" />
+    </Toaster>
+    <div class="z-10 size-full">
+        <Header bind:this={header} {version} />
+        <div class="flex-center h-full w-full flex-col gap-6 h-sm:gap-3">
+            <FileDrop />
+            <div
+                class="flex-center bottom-8 w-full flex-row gap-4 text-center h-sm:absolute h-md:flex-col">
+                {#if $upload.link}
+                    <div
+                        class="flex-center flex-col"
+                        out:fade={{ duration: 200 }}
+                        in:uploadLink>
+                        <span
+                            class="font-semibold text-gray-600 dark:text-gray-200">
+                            <Check class="inline-block h-[1em]" />
+                            Archivo subido correctamente
+                        </span>
+                        <a
+                            class="link font-semibold"
+                            target="_blank"
+                            href={$upload.link}>
+                            <Link class="inline-block h-[1em]" />
+                            {$upload.link}
+                        </a>
+                    </div>
+                {/if}
+                <Button
+                    icon={CloudUpload}
+                    loading={$upload.uploading}
+                    disabled={$upload.disabled}
+                    on:click={uploadFile}>
+                    Subir
+                </Button>
+            </div>
+        </div>
+    </div>
+    <Background />
+</main>
 
 <AlertDialog />
 <Dialog.Root
@@ -354,56 +400,12 @@
                 <Button
                     icon={Check}
                     disabled={!userConsent}
-                    on:click={handleConsent}>Continuar</Button>
+                    on:click={() => {
+                        consentDialog = false;
+                        ls.set("FLAG_USER_CONSENT", true);
+                        header.fetchAnnouncements();
+                    }}>Continuar</Button>
             </div>
         </Dialog.Content>
     </Dialog.Portal>
 </Dialog.Root>
-
-<main class="absolute flex flex-col text-gray-900 dark:text-gray-50">
-    <Toaster
-        bind:position={toastPos}
-        toastOptions={{
-            unstyled: true,
-            duration: 7000,
-        }}>
-        <Info slot="info-icon" />
-        <TriangleAlert slot="warning-icon" />
-    </Toaster>
-    <div class="z-10 size-full">
-        <Header {version} />
-        <div class="flex-center h-full w-full flex-col gap-6 h-sm:gap-3">
-            <FileDrop />
-            <div
-                class="flex-center bottom-8 w-full flex-row gap-4 text-center h-sm:absolute h-md:flex-col">
-                {#if $upload.link}
-                    <div
-                        class="flex-center flex-col"
-                        out:fade={{ duration: 200 }}
-                        in:uploadLink>
-                        <span
-                            class="font-semibold text-gray-600 dark:text-gray-200">
-                            <Check class="inline-block h-[1em]" />
-                            Archivo subido correctamente
-                        </span>
-                        <a
-                            class="link font-semibold"
-                            target="_blank"
-                            href={$upload.link}>
-                            <Link class="inline-block h-[1em]" />
-                            {$upload.link}
-                        </a>
-                    </div>
-                {/if}
-                <Button
-                    icon={CloudUpload}
-                    loading={$upload.uploading}
-                    disabled={$upload.disabled}
-                    on:click={uploadFile}>
-                    Subir
-                </Button>
-            </div>
-        </div>
-    </div>
-    <Background />
-</main>
