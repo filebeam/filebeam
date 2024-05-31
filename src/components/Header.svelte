@@ -33,7 +33,9 @@
         open: false,
     };
 
-    const mdParser = new showdown.Converter();
+    const mdParser = new showdown.Converter({
+        openLinksInNewWindow: true,
+    });
     mdParser.setFlavor("github");
 
     const helpMenu = [
