@@ -35,38 +35,6 @@
     const version = __APP_VERSION__;
     const twCfg = resolveConfig(tailwindConfig);
 
-    fetch("/consoleLogo.png")
-        .then((response) => response.blob())
-        .then((blob) => {
-            const reader = new FileReader();
-            reader.onload = () => {
-                console.log(
-                    `%cFileBeam%c\n⚠️ Antes de usar la consola, tal vez quieras echarle un vistazo a los siguientes enlaces primero%c\n\n📚 Docs: https://docs.filebeam.xyz\n🐈 GitHub: https://github.com/filebeam/filebeam`,
-
-                    `padding: 14px;
-                    font-size: 3.5em;
-                    color: transparent;
-                    background-size: 100%;
-                    background-repeat: no-repeat;
-                    background-image: url("${reader.result}");
-                    `,
-
-                    `all: initial;
-                    color: #f3e590;
-                    font-size: 1.5em;
-                    font-weight: bold;
-                    font-family: sans-serif;
-                    `,
-
-                    `font-size: 1.2em;
-                    font-weight: bold;
-                    font-family: sans-serif;
-                    `,
-                );
-            };
-            reader.readAsDataURL(blob);
-        });
-
     let consentDialog = !ls.get("FLAG_USER_CONSENT"),
         userConsent = false,
         header;
@@ -255,6 +223,7 @@
             .catch((err) => {
                 $upload.disabled = false;
                 $upload.uploading = false;
+                clearTimeout(uploadTimeout);
                 console.error(err);
                 showAlert({
                     title: "La subida ha fallado",
