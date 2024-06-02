@@ -7,11 +7,15 @@
     import { cubicOut } from "svelte/easing";
     import { scaleDialog } from "../lib/transitions";
 
+    import fallback from "../assets/fallback.jpeg";
+    import CatSandwich from "../assets/cat-sandwich.gif";
+
     import showdown from "showdown";
     import "tippy.js/dist/tippy.css";
     import tippy, { createSingleton } from "tippy.js";
     import { Dialog, DropdownMenu } from "bits-ui";
     import Button from "../components/Button.svelte";
+    import { showAlert } from "./AlertDialog.svelte";
     import { toast } from "svelte-sonner";
     import Logo from "./Logo.svelte";
 
@@ -24,9 +28,9 @@
         CircleHelp,
         LoaderCircle,
     } from "lucide-svelte/icons";
-    import { showAlert } from "./AlertDialog.svelte";
 
     export let version;
+
     let announcements = {
         data: [],
         loading: true,
@@ -36,6 +40,7 @@
     const mdParser = new showdown.Converter({
         openLinksInNewWindow: true,
     });
+
     mdParser.setFlavor("github");
 
     const helpMenu = [
@@ -56,6 +61,8 @@
             icon: Shield,
         },
     ];
+
+    const fallbackImg = (ev) => (ev.target.src = fallback);
 
     tippy.setDefaultProps({
         zIndex: 20,
@@ -185,6 +192,7 @@
                                             {#if announcement.img_url}
                                                 <img
                                                     class="max-h-60 w-full rounded-lg bg-gray-300 object-cover dark:bg-gray-700"
+                                                    on:error={fallbackImg}
                                                     src={announcement.img_url}
                                                     alt={announcement.title} />
                                             {/if}
@@ -214,7 +222,7 @@
                         <div class="flex-center w-full flex-col gap-3">
                             <img
                                 class="max-h-60 w-full rounded-md"
-                                src="/src/assets/cat-sandwich.gif"
+                                src={CatSandwich}
                                 alt="Cargando Anuncios" />
                             <span class="font-bold uppercase text-gray-400">
                                 <LoaderCircle
