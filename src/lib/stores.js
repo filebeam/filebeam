@@ -4,7 +4,7 @@ const baseURL = "https://filebeam.xyz";
 export const statusURL = readable("https://jorge603.instatus.com");
 
 export const api = readable({
-    upload: `${baseURL}/api`,
+    upload: `${baseURL}/api/`,
     announcements: `${baseURL}/api/anuncios`,
 });
 
